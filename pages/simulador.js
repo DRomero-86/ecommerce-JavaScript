@@ -1,4 +1,4 @@
-let nombre = prompt("Ingresa tu nombre");
+let nombre = prompt("Hola! Como estás? Ingresa tu nombre");
 let dinero = parseInt(prompt("Hola " + nombre + " Bienvenido a la heladería. Los precios son:" +  "\n" + 
 "Palito: $5" +  "\n" + "Cucurucho: $10" + "\n" + "Tacita: $15" +  "\n" + "Pote 1/4: $20" +  "\n" + "¿cuanto dinero($) dispones:"));
 let dineroDiferencia;
