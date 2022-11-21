@@ -10,9 +10,11 @@ let precioProducto = 0;
 let nombreProducto= "";
 const multiplica = (x1,x2)=> x1 * x2;
 const suma = (x1,x2)=> x1 + x2;
-
+let resultadoTotal = ""
+let total = 0
 
 let nombre = prompt("Ingrese su nombre");
+
 do{
     codProducto = Number(prompt(`${nombre} los precios son los siguientes:
     cod(001)- Lapices de colores x 6 : $ ${lapicesColores6}
@@ -65,14 +67,17 @@ do{
             cantidad = Number(prompt(`Ha igresado un valor incorrecto. Por favor ingrese la cantidad de ${nombreProducto} que desea`));
         }
         if (cantidad == 0){
-        break;
+            break;
         } else {
-        let parcial = multiplica (precioProducto,cantidad);
-        let resultadoParcial = (`${cantidad} ${nombreProducto} de $${precioProducto} c/u = $${parcial}`);
-        let resultadoTotal = suma(suma(resultadoTotal,"\n"),resultadoParcial);
-        let total = suma (total,parcial)
+            let parcial = multiplica (precioProducto,cantidad);
+            console.log(parcial);
+            let resultadoParcial = (`${cantidad} ${nombreProducto} de $${precioProducto} c/u = $${parcial}`);
+            resultadoTotal = suma(suma(resultadoTotal,"\n"),resultadoParcial);
+            total = suma(total,parcial)
+        
     }
 }
+
 }while ((codProducto || cantidad) !== 0);
 
 let resultadoMostrar = suma(suma(resultadoTotal,"\n"),`El total es de $${total}`);
