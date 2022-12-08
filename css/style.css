@@ -4,9 +4,10 @@
 }
 
 .containerTitle{
-    background:rgb(26, 95, 41);
-    margin-top: 1rem;
+    background:rgb(58, 54, 54);
+    /* margin-top: 1rem; */
     box-shadow: 1px 1px 10px ;
+    position: fixed;
 }
 .title{
     color: rgb(216, 212, 212);
@@ -15,30 +16,17 @@
     font-family:'Helvetica Neue', sans-serif;
 }
 
-.containerMain{
-    margin-top: 3rem;
-}
-
-.articles__cards{
+.articlesCards{
     justify-content: center;
+    margin-top: 5rem;
 }
-.cards__item{
-   
+.cardsItem{   
     margin: 15px;
-    max-width: 350px;
+    max-width: 300px;
     box-shadow: 1px 1px 6px rgb(0, 0, 0);
     
 }
-.card{
-    border: none!important;
-}
 
-  .cards__paragraph {
-    font-size: large;
-    text-decoration: none;
-    text-align: center;
-  }
-
-  .cards__text {
-    font-weight: 700;
+  .cardsText {
+    font-weight: 400;
   }
