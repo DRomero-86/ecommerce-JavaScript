@@ -1,4 +1,6 @@
 let articlesList = [];
+let carrito = [];
+
 class Article{
     constructor(id,description,model,brand,price,stock,imgSource){
         this.id = id;
@@ -27,7 +29,7 @@ console.log(articlesList);
 
 const divCardsContainer = document.getElementById("articlesCards");
 
-const articlesShow = () => {
+const articlesShow = () => { //renderiza todos los productos
     articlesList.forEach(article => {
         const card = document.createElement("div");      
         card.classList.add("col-sm-12","col-md-6","col-lg-4","cardsItem","rounded")
@@ -37,14 +39,30 @@ const articlesShow = () => {
                         </div>
                         <div class="cardsBody card-body">                                
                                 <h5 class="small cardsParagraph">${article.description}</h5>
-                                <div class="d-flex">
+                                <div class="d-flex justify-content-between">
                                     <b class=""> Precio: $${article.price} <b>
-                                    <button class="btn btn-success"> Agregar al carrito </button>
+                                    <button id="boton${article.id}" class="btn btn-success w-75"> Agregar al carrito </button>
                                 </div>
                         </div>`
                         
                         divCardsContainer.appendChild(card);
-    });
+   
+        const botonAgregar = document.getElementById(`boton${article.id}`);
+        botonAgregar.addEventListener("click", () => {
+            agregarAlCarrito(article.id)
+        })
+     })
+}
+
+const agregarAlCarrito = (id) =>{
+    const productoEnCarrito = carrito.find(el => el.id === id);
+    if(productoEnCarrito) {
+        productoEnCarrito.qty++
+    }else{
+        const productoAgregar = articlesList.find(el=>el.id ===id)
+        carrito.push(productoAgregar)
+        console.log(carrito);
+    }
 }
 
 articlesShow();
