@@ -45,7 +45,7 @@ const articlesShow = () => { //renderiza todos los productos
                                 </div>
                         </div>`
                         
-                        divCardsContainer.appendChild(card);
+        divCardsContainer.appendChild(card);
    
         const botonAgregar = document.getElementById(`boton${article.id}`);
         botonAgregar.addEventListener("click", () => {
@@ -66,6 +66,59 @@ const agregarAlCarrito = (id) =>{
 }
 
 articlesShow();
+
+const contenedorCarrito = document.getElementById("cartContainer")
+
+const verCarrito = document.getElementById("verCarrito")
+
+verCarrito.addEventListener("click", () => {
+    mostrarCarrito()
+})
+
+const mostrarCarrito = () => {
+
+    contenedorCarrito.innerHTML = "";
+    
+    carrito.forEach(el => {
+        const card = document.createElement("div");      
+        card.classList.add("col-sm-12","col-md-6","col-lg-4","cardsItem","rounded")
+        card.innerHTML =
+                        `<div class="cardsImg p-2">
+                                <img src="${el.imgSource}" class="card-img-top" alt="${el.description}">
+                        </div>
+                        <div class="cardsBody card-body">                                
+                                <h5 class="small cardsParagraph">${el.description}</h5>
+                                <div class="d-flex justify-content-between">
+                                    <b class=""> Precio: $${el.price} <b>
+                                    <b class=""> Cantidad: ${el.qty}un <b>
+                                    <button id="eliminar${el.id}" class="btn btn-danger w-75"> eliminar </button>
+                                </div>
+                        </div>`
+                        
+        contenedorCarrito.appendChild(card);
+         
+         
+        //eliminar productos del carrito
+
+        const boton = document.getElementById(`eliminar${el.id}`) 
+        boton.addEventListener("click", () => {
+            eliminarProducto(el.id)
+        })
+    });
+}
                 
-                
-                
+const eliminarProducto = (id) => {
+    const productoAEliminar = carrito.find(el => el.id === id)
+    const indice = carrito.indexOf(productoAEliminar)
+    carrito.splice(indice,1)
+
+    mostrarCarrito()
+}
+
+// vaciamos el carrito
+
+const vaciarCarrito = document.getElementById("vaciarCarrito")
+vaciarCarrito.addEventListener("click", () => {
+    carrito = []
+    mostrarCarrito();
+})
