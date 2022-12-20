@@ -50,6 +50,7 @@ const articlesShow = () => { //renderiza todos los productos
         const botonAgregar = document.getElementById(`boton${article.id}`);
         botonAgregar.addEventListener("click", () => {
             agregarAlCarrito(article.id)
+            
         })
      })
 }
@@ -63,6 +64,7 @@ const agregarAlCarrito = (id) =>{
         carrito.push(productoAgregar)
         console.log(carrito);
     }
+    
 }
 
 articlesShow();
@@ -77,7 +79,7 @@ verCarrito.addEventListener("click", () => {
 
 const mostrarCarrito = () => {
 
-    contenedorCarrito.innerHTML = "";
+    contenedorCarrito.innerHTML=""
     
     carrito.forEach(el => {
         const card = document.createElement("div");      
@@ -98,13 +100,14 @@ const mostrarCarrito = () => {
         contenedorCarrito.appendChild(card);
          
          
-        //eliminar productos del carrito
+//eliminar productos del carrito
 
         const boton = document.getElementById(`eliminar${el.id}`) 
         boton.addEventListener("click", () => {
             eliminarProducto(el.id)
         })
     });
+    calcularTotal()
 }
                 
 const eliminarProducto = (id) => {
@@ -122,3 +125,15 @@ vaciarCarrito.addEventListener("click", () => {
     carrito = []
     mostrarCarrito();
 })
+
+
+const total = document.getElementById("total")
+
+const calcularTotal = () => {
+let totalCompra = 0
+carrito.forEach(el => {
+    totalCompra += el.price * el.qty
+})
+
+total.innerHTML = `$${totalCompra}`
+}
