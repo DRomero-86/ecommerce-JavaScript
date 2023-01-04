@@ -43,7 +43,7 @@ const articlesShow = () => { //renderiza todos los productos
                                     <b class=""> Precio: $${article.price} <b>
                                     <button id="boton${article.id}" class="btn btn-success w-75"> Agregar al carrito </button>
                                 </div>
-                        </div>`
+                        </div>` 
                         
         divCardsContainer.appendChild(card);
    

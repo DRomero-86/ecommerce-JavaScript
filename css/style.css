@@ -1,23 +1,87 @@
 *{
     margin: 0;
     box-sizing: border-box;
+    
 }
 
-.containerTitle{
-    background:rgb(58, 54, 54);
-    /* margin-top: 1rem; */
-    box-shadow: 1px 1px 10px ;
+.navbar{
     position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to top, #521b1b, #833539);
+    box-shadow: 1px 3px 16px 0 #000;
 }
+.navbarLogo{
+    max-width: 400px;
+    align-items: baseline;
+}
+.logoImag {
+    width: 30px;
+    height: 30px;
+    border-radius: 30%;
+}
+  
+.logoTitle {
+    font-size: 10px;
+    margin-left: 5px;
+    color: white;
+}
+.menu {
+    width: 70%;
+    max-width: 600px;
+    color: white;
+
+}
+.menuItem {
+    list-style: none;
+}
+.menuItem a {
+    text-decoration: none;
+}
+  
+.menuItem:hover {
+    color: #be888b;
+}
+  
+.submenu {
+    background: #521b1b;
+    color: white;
+  }
+  
+.submenu li a:hover {
+    background-color: #521b1b;
+  }
+  
+.submenu li:hover {
+    color: #be888b;
+  }
+
+.iconModal{
+    max-width: 40px;
+}
+.containerTitle{
+    margin-top: 6rem;
+}
+
+/* 
+.span{
+    color: rgb(26, 95, 41) ;
+}
+.link {
+    font-weight: 600;
+    text-decoration: none;
+    
+}*/
 .title{
-    color: rgb(216, 212, 212);
     text-align: center;
+    color: rgb(10, 4, 4);
     font-weight: 700;
     font-family:'Helvetica Neue', sans-serif;
 }
 
 .articlesCards{
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 5rem;
 }
 .cardsItem{   
