@@ -47,6 +47,7 @@
 .submenu {
     background: #521b1b;
     color: white;
+    cursor:pointer;
   }
   
 .submenu li a:hover {
@@ -93,4 +94,8 @@
 
   .cardsText {
     font-weight: 400;
+  }
+
+  #cartContainer {
+    display: none;
   }
