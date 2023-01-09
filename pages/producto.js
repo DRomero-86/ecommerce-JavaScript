@@ -160,8 +160,8 @@ const articlesShow = () => {
 
     divCardsContainer.appendChild(card);
 
-    const botonAgregar = document.getElementById(`boton${article.id}`);
-    botonAgregar.addEventListener("click", () => {
+    const botonAgregarProducto = document.getElementById(`boton${article.id}`);
+    botonAgregarProducto.addEventListener("click", () => {
       agregarAlCarrito(article.id);
     });
   });
@@ -176,7 +176,7 @@ const agregarAlCarrito = (id) => {
     const articleAdd = articlesList.find((el) => el.id === id);
     carrito.push(articleAdd);
     console.log(carrito);
-  }
+  };
 };
 
 articlesShow();
@@ -187,9 +187,9 @@ verCarrito.addEventListener("click", () => {
 });
 
 const articlesHide = () => {
-    cartContainer.style.display = `block`
-    articlesCards.innerHTML = ``
-}
+    cartContainer.style.display = `block`;
+    articlesCards.innerHTML = ``;
+};
 const detalleCarrito = () => {
   cart.innerHTML = "";
 
@@ -197,36 +197,42 @@ const detalleCarrito = () => {
     const container = document.createElement("div");
     container.classList.add("container");
     container.innerHTML = `<div class="border border-5 d-flex">
-         <div class="">
-         <button id="eliminar${
-           el.id
-         }" class="btn btn-danger h-100"> Quitar </button> 
-         </div>
-                                    <div class="border border-5 align-items-between w-100">
-                                        <h3 class="p-2">${el.description}</h3>
-                                        <div class="d-flex justify-content-between">                            
-                                            <img  src="${
-                                              el.imgSource
-                                            }" style="height:auto;" alt="${
-      el.description
-    }">
+                                <div class="">
+                                    <button id="quitar${el.id}" class="btn btn-danger h-100"> Quitar </button> 
+                                </div>
+                                <div class="border border-5 w-100">
+                                    <h3 class="p-2">${el.description}</h3>
+                                    <div class="d-flex justify-content-between">                            
+                                        <img  src="${el.imgSource}" style="height:auto;" alt="${el.description}">
+                                        <div class=" d-flex flex-column">
+                                            <p class="text-center">Un: ${el.qty}</p>
                                             <div>
-                                                <p class="p-2">Valor:$${
-                                                  el.price
-                                                }</p>
-                                                <p class="p-2">Un: ${el.qty}</p>
-                                                <p class="p-2">Total:$${
-                                                  el.price * el.qty
-                                                }</p>
-                                                </div>
-                                                </div>
+                                              <button id="eliminar${el.id}" class="btn-danger m-1 fas fa-hand-point-down"></button>
+                                              <button id="agregar${el.id}" class="btn-success m-1 fas fa-hand-point-up"></button>
+                                            </div>
+                                        </div>
+                                        <div class= "d-flex justify-content-between">
+                                            <p class="p-2">Valor:$${el.price}</p>
+                                            <p class="p-2">Total:$${el.price * el.qty}</p>
+                                        </div>
                                     </div>
-                                    </div>`;
+                                </div>
+                            </div>`;
     cart.appendChild(container);
 
-    const boton = document.getElementById(`eliminar${el.id}`);
+    const boton = document.getElementById(`quitar${el.id}`);
     boton.addEventListener("click", () => {
+      quitarProducto(el.id);
+    });
+    const botonEliminar = document.getElementById(`eliminar${el.id}`);
+    botonEliminar.addEventListener("click", () => {
       eliminarProducto(el.id);
+      
+    });
+    const botonAgregar = document.getElementById(`agregar${el.id}`);
+    botonAgregar.addEventListener("click", () => {
+      agregarProducto(el.id);
+
     });
   });
 
@@ -243,12 +249,12 @@ const calcularTotal = () => {
   total.innerHTML = `$${totalCompra}`;
 };
 
-const eliminarProducto = (id) => {
-  if (contadorCarrito.innerText > 0) {
-    contadorCarrito.innerText--
-  }
-  const productoAEliminar = carrito.find((el) => el.id === id);
-  const indice = carrito.indexOf(productoAEliminar);
+const quitarProducto = (id) => {
+  // if (contadorCarrito.innerText > 0) {
+  //   contadorCarrito.innerText--
+  // }
+  const productoAQuitar = carrito.find((el) => el.id === id);
+  const indice = carrito.indexOf(productoAQuitar);
   carrito.splice(indice, 1);
   
   if (carrito.length === 0){
@@ -260,9 +266,25 @@ const eliminarProducto = (id) => {
    }
 };
 
+const eliminarProducto = (id) => {
+  const producto = carrito.find((el) => el.id === id)
+   if(producto.qty === 0){
+    quitarProducto()
+  } else {
+    producto.qty--
+  }
+ detalleCarrito()
+
+}
+const agregarProducto = (id) => {
+  const producto = carrito.find((el) => el.id === id)
+  producto.qty++
+  detalleCarrito()
+}
+
 // vaciamos el carrito
 
 vaciarCarrito.addEventListener("click", () => {
   carrito = [];
-  detalleCarrito();
+  articlesShow();
 });
