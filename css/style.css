@@ -35,6 +35,7 @@
 }
 .menuItem {
     list-style: none;
+    cursor:pointer;
 }
 .menuItem a {
     text-decoration: none;
@@ -43,20 +44,6 @@
 .menuItem:hover {
     color: #be888b;
 }
-  
-.submenu {
-    background: #521b1b;
-    color: white;
-    cursor:pointer;
-  }
-  
-.submenu li a:hover {
-    background-color: #521b1b;
-  }
-  
-.submenu li:hover {
-    color: #be888b;
-  }
 
 .iconModal{
     max-width: 40px;
