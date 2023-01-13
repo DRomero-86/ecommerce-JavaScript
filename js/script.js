@@ -6,17 +6,15 @@ let carrito = []
 const divCardsContainer = document.getElementById("articlesCards");
 const cart = document.getElementById("cart");
 const verCarrito = document.getElementById("verCarrito");
-const vaciarCarrito = document.getElementById("vaciarCarrito");
+const limpiarCarrito = document.getElementById("limpiarCarrito");
 const total = document.getElementById("total")
 const cartContainer = document.getElementById("cartContainer")
+const cerrarModal = document.getElementById("cerrarModal")
 
 
 if (!localStorage.getItem(`carrito`)){
     localStorage.setItem(`carrito`, JSON.stringify([]));
 };
-
-
-
 
 fetch(articlesList)
     .then(res => res.json())
@@ -84,6 +82,7 @@ const agregarAlCarrito = (id) => {
      cartContainer.style.display = `block`;
      articlesCards.innerHTML = ``;
  };
+
  const detalleCarrito = () => {
    cart.innerHTML = "";
    carrito = JSON.parse(localStorage.getItem(`carrito`));
@@ -179,14 +178,21 @@ const agregarAlCarrito = (id) => {
    
  }
  
- // vaciamos el carrito
- 
- vaciarCarrito.addEventListener("click", () => {
-   carrito = []
+  cerrarModal.addEventListener("click", () => {
+     vaciarCarrito()
+    });
+   
+   // vaciamos el carrito
+limpiarCarrito.addEventListener("click", () => {
+  vaciarCarrito()
+});
+    
+const vaciarCarrito = () => {
+   carrito = [];
    setearCarritoStorage(carrito);
    quitarProducto();
- });
- 
+
+ }
  const setearCarritoStorage = () => {
     localStorage.setItem('carrito', JSON.stringify(carrito))
     actualizarContador()

@@ -27,15 +27,15 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="menu mx-auto mb-2 mb-lg-0 d-flex justify-content-between">
 				
-						<li class="menuItem"><a class="menuItemLink text-reset" id="articleAll">Todos</a></li>
-						<li class="menuItem"><a class="menuItemLink text-reset" id="articleEscolar">Escolar</a></li>
-						<li class="menuItem"><a class="menuItemLink text-reset" id="articleComercial">Comercial</a></li>
-						<li class="menuItem"><a class="menuItemLink text-reset" id="articlePapelera">Papelera</a></li>
+						<li class="menuItem"><a class="menuItemLink text-reset" id="all">Todos</a></li>
+						<li class="menuItem"><a class="menuItemLink text-reset" id="escolar">Escolar</a></li>
+						<li class="menuItem"><a class="menuItemLink text-reset" id="comercial">Comercial</a></li>
+						<li class="menuItem"><a class="menuItemLink text-reset" id="papelera">Papelera</a></li>
 			</ul>				
 		</div>
-		<!-- Boton modal -->
+
 			<div id="verCarrito">
-				<button type="button" class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"><i id="iconModal" class="iconModal fas fa-shopping-cart"></i>
+				<button type="button" class="btn text-white" ><i id="iconModal" class="iconModal fas fa-shopping-cart"></i>
 				<span id="contadorCarrito">0</span></button>
 			</div>
 		</nav>
@@ -50,14 +50,41 @@
 				
 			</div>
 			<div>
-				<div class="container"> 
-				<button class="btn btn-danger" id="vaciarCarrito">Limpiar</button>
-				<button class="btn btn-success" id="terminarCompra">Finalizar Compra</button>
+				<div class="container m-2 d-flex justify-content-around">
+					<div>
+
+						<button class="btn btn-danger" id="limpiarCarrito">Limpiar</button>
+						<button type="button p-2" id="finalizarCompra"class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							Finalizar compra
+						</button>
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+							<div class="modal-content" id= "modalContent">
+								<div class="modal-header">
+									<h3 class="modal-title" id="exampleModalLabel">Distribuidora Drom</h3>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body text-center">
+									<h4>La compra se realizó con éxito <i class="fa-thin fas fa-check"></i></h4>
+									<p>Los datos fueron enviados al mail indicado</p>
+								</div>
+								<div class="modal-footer container d-flex justify-content-around">
+									<div class="container text-end">
+										<button class="btn btn-secondary" data-bs-dismiss="modal" id="cerrarModal">Cerrar</button>						
+									</div>
+								</div>
+							</div>
+							</div>
+						</div>
+						<!-- Fin Modal -->
+					</div>
+					<div class="btn btn-dark text-white">El total de la compra es <span id="total"></span>
+					</div>
 				</div>
-				<p>El total de la compra es <span id="total"></span></p>
 			</div>
-		</div>
-		
+		</div> 
+
 	
 	 <!-- // Sweet Alert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -65,8 +92,9 @@
 <script src="https://kit.fontawesome.com/9419242be9.js"
 crossorigin="anonymous"></script>
 <!-- Js -->
-<!-- <script src="./pages/carrito.js"></script> -->
-<script src="./pages/script.js"></script>
+
+<script src="./js/sweetAlert.js"></script>
+<script src="./js/script.js"></script>
 
 </body>
 </html>
