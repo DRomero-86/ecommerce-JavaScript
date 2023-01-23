@@ -86,7 +86,7 @@
         "price": 40,
         "stock":10,
         "imgSource": "./multimedia/lapiz_faber.png",
-        "category": "Escolar",
+        "category": "Comercial",
         "qty": 1
         },
         {"id":10,
@@ -96,7 +96,7 @@
         "price": 500,
         "stock":12,
         "imgSource": "./multimedia/resma_autor.png",
-        "category": "Comercial",
+        "category": "Papelera",
         "qty": 1
         }
     ]

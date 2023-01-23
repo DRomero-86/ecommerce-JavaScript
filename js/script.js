@@ -1,6 +1,7 @@
 let articlesList = "json/dB.json"
 let listaProductos = [];
 let carrito = []
+let category = ""
 
 
 const divCardsContainer = document.getElementById("articlesCards");
@@ -10,6 +11,10 @@ const limpiarCarrito = document.getElementById("limpiarCarrito");
 const total = document.getElementById("total")
 const cartContainer = document.getElementById("cartContainer")
 const cerrarModal = document.getElementById("cerrarModal")
+const all = document.getElementById("all")
+const escolar = document.getElementById("escolar")
+const comercial = document.getElementById("comercial")
+const papelera = document.getElementById("papelera")
 
 
 if (!localStorage.getItem(`carrito`)){
@@ -20,16 +25,17 @@ fetch(articlesList)
     .then(res => res.json())
     .then(data => {
         listaProductos = data
-        articlesShow()
+        articlesShow(data)
     })
     .catch((error) => console.log(error))
     .finally( () =>{
     console.log("proceso finalizado");
     })
 
-const articlesShow = () => {
+const articlesShow = (array) => {
+  divCardsContainer.innerHTML = ""
   actualizarContador()
-  listaProductos.forEach((article) => {
+  array.forEach((article) => {
     const card = document.createElement("div");
     card.classList.add(
       "col-sm-12",
@@ -204,3 +210,30 @@ const vaciarCarrito = () => {
     contadorCarrito.innerText = carrito.reduce((acc, el) => acc + el.qty, 0)
 }
 
+
+all.addEventListener("click", () => { 
+  category = ""
+  articlesShow(listaProductos)
+})
+
+escolar.addEventListener("click", () => { 
+  category = "Escolar"
+  filtrar(category)
+})
+
+comercial.addEventListener("click", () => { 
+  category = "Comercial"
+  filtrar(category)
+})
+
+papelera.addEventListener("click", () => { 
+  category = "Papelera"
+  filtrar(category)
+})
+
+const filtrar = (category) => {
+  const lista = listaProductos.filter(el => el.category === category)
+  localStorage.setItem("category", JSON.stringify(lista))
+  const cat = JSON.parse(localStorage.getItem("category"))
+  articlesShow(cat)
+}
