@@ -44,16 +44,19 @@ const articlesShow = (array) => {
       "cardsItem",
       "rounded"
     );
-    card.innerHTML = `<div class="cardsImg p-2">
+    card.innerHTML = `<div class="d-flex justify-content-between">
+                        <div class="cardsImg">
                                 <img src="${article.imgSource}" class="card-img-top" alt="${article.description}">
                         </div>
-                        <div class="cardsBody card-body">                                
+                        <div class="cardsBody card-body d-flex flex-column align-items-between">                                
                                 <h5 class="small cardsParagraph">${article.description}</h5>
-                                <div class="d-flex justify-content-between">
+                                <div class="d-flex w-100 flex-column justify-content-between">
                                     <b class=""> Precio: $${article.price} <b>
-                                    <button id="boton${article.id}" class="btn btn-success w-75"> Agregar al carrito </button>
+                                    <button id="boton${article.id}" class="btn btn-success">Al carrito</button>
                                 </div>
-                        </div>`;
+                        </div>
+                      </div>
+                        `;
 
     divCardsContainer.appendChild(card);
 

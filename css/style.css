@@ -74,14 +74,26 @@
 }
 .cardsItem{   
     margin: 15px;
-    max-width: 300px;
+    max-width: 320px;
     box-shadow: 1px 1px 6px rgb(0, 0, 0);
-    
+    text-align: center;
 }
 
-  .cardsText {
-    font-weight: 400;
-  }
+.cardsImg{
+    margin: auto;
+    height: 100%;
+    width: 10rem;
+    justify-content: center;
+}
+
+.cardsImg img{
+    height: 6.5rem;
+    width: 7.5rem;
+}
+
+.cardsText {
+font-weight: 400;
+}
 
   #cartContainer {
     display: none;
