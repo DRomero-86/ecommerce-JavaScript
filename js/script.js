@@ -105,7 +105,7 @@ const agregarAlCarrito = (id) => {
                                  <div class="border border-5 w-100">
                                      <h3 class="p-2">${el.description}</h3>
                                      <div class="d-flex justify-content-between">                            
-                                         <img  src="${el.imgSource}" style="height:auto;" alt="${el.description}">
+                                         <img  src="${el.imgSource}" style="height:auto; width:250px;" alt="${el.description}">
                                          <div class=" d-flex flex-column">
                                              <p class="text-center">Un: ${el.qty}</p>
                                              <small class="text-center"> Stock: ${el.stock}</small>
@@ -161,7 +161,7 @@ const agregarAlCarrito = (id) => {
 
    if (carrito.length === 0){
        cartContainer.style.display = `none`;
-       articlesShow()
+       articlesShow(listaProductos)
    }
    
  };
@@ -194,12 +194,14 @@ const agregarAlCarrito = (id) => {
    // vaciamos el carrito
 limpiarCarrito.addEventListener("click", () => {
   vaciarCarrito()
+  
 });
     
 const vaciarCarrito = () => {
    carrito = [];
    setearCarritoStorage(carrito);
    quitarProducto();
+  
 
  }
  const setearCarritoStorage = () => {
@@ -217,6 +219,7 @@ const vaciarCarrito = () => {
 all.addEventListener("click", () => { 
   category = ""
   articlesShow(listaProductos)
+  cartContainer.style.display = `none`;  
 })
 
 escolar.addEventListener("click", () => { 
@@ -239,4 +242,5 @@ const filtrar = (category) => {
   localStorage.setItem("category", JSON.stringify(lista))
   const cat = JSON.parse(localStorage.getItem("category"))
   articlesShow(cat)
+  cartContainer.style.display = `none`; 
 }
