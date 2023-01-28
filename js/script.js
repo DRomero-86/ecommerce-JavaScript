@@ -55,8 +55,8 @@ const articlesShow = (array) => {
                                     <button id="boton${article.id}" class="btn btn-success">Al carrito</button>
                                 </div>
                         </div>
-                      </div>
-                        `;
+                      </div>`
+                      ;
 
     divCardsContainer.appendChild(card);
 
@@ -78,7 +78,7 @@ const agregarAlCarrito = (id) => {
      carrito.push(articleAdd);
      console.log(carrito);
    };
-        setearCarritoStorage(carrito);
+      setearCarritoStorage(carrito);
  };
  
  
@@ -97,30 +97,32 @@ const agregarAlCarrito = (id) => {
    carrito = JSON.parse(localStorage.getItem(`carrito`));
    carrito.forEach((el) => {
      const container = document.createElement("div");
-     container.classList.add("container");
-     container.innerHTML = `<div class="border border-5 d-flex">
-                                 <div class="">
-                                     <button id="quitar${el.id}" class="btn btn-danger h-100"> Quitar </button> 
-                                 </div>
-                                 <div class="border border-5 w-100">
-                                     <h3 class="p-2">${el.description}</h3>
-                                     <div class="d-flex justify-content-between">                            
-                                         <img  src="${el.imgSource}" style="height:auto; width:250px;" alt="${el.description}">
-                                         <div class=" d-flex flex-column">
-                                             <p class="text-center">Un: ${el.qty}</p>
-                                             <small class="text-center"> Stock: ${el.stock}</small>
-                                             <div>
-                                               <button id="eliminar${el.id}" class="text-center btn-danger m-1 fas fa-hand-point-down"></button>
-                                               <button id="agregar${el.id}" class="text-center btn-success m-1 fas fa-hand-point-up"></button>
-                                             </div>
-                                         </div>
-                                         <div class= "d-flex justify-content-between">
-                                             <p class="p-2">Valor:$${el.price}</p>
-                                             <p class="p-2">Total:$${el.price * el.qty}</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>`;
+     container.classList.add("container", "d-flex", "flex-column", "cart", "m-1", "border");
+     container.innerHTML = `
+                             <div class="d-flex justify-content-between mb-2">
+                                <h3>${el.description}</h3>
+                                <div class="cartClose">
+                                    <p id="quitar${el.id}">X</p> 
+                                </div>
+                             </div>
+                             <div class="d-flex justify-content-between text-white">                            
+                                  <img  src="${el.imgSource}" style="height:auto; width:250px;" alt="${el.description}">
+                                  <div class="d-flex flex-column justify-content-between">
+                                      <div class="">
+                                          <p class="text-center"><b>Un: ${el.qty}</p></b>
+                                          <div class="text-center">
+                                            <button id="eliminar${el.id}" class="text-center btn-danger m-1 fas fa-hand-point-down"></button>
+                                            <button id="agregar${el.id}" class="text-center btn-success m-1 fas fa-hand-point-up"></button>
+                                          </div>
+                                          <p class="text-center mt-2"> Stock: ${el.stock}</p>
+                                      </div>
+                                      <div class="d-flex justify-content-between">
+                                          <p class="p-2">Valor:$${el.price}</p>
+                                          <p class="p-2">Total:$${el.price * el.qty}</p>
+                                      </div>
+                                  </div>
+                              </div>
+                             `;
      cart.appendChild(container);
  
      const boton = document.getElementById(`quitar${el.id}`);

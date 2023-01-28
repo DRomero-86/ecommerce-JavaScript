@@ -9,7 +9,8 @@
     top: 0;
     display: flex;
     justify-content: space-between;
-    background: linear-gradient(to top, #521b1b, #833539);
+    background: rgb(255,255,255);
+    background: linear-gradient(130deg, rgb(51, 88, 110) 40%, rgb(54, 65, 70) 60%);
     box-shadow: 1px 3px 16px 0 #000;
 }
 .navbarLogo{
@@ -96,5 +97,20 @@ font-weight: 400;
 }
 
   #cartContainer {
-    display: none;
+      display: none;
   }
+  .cartContainer{
+    width: 50%;
+  }
+
+  .cart {
+    width: 37rem;
+    background: linear-gradient(119deg, rgba(255,255,255) 60%, rgb(51, 88, 110) 40%);
+    border-radius: 2%;
+}
+
+.cartClose {
+    cursor: pointer;
+    color: white;
+    font-size: large;
+}
